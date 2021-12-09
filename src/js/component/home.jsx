@@ -19,10 +19,10 @@ const Home = () => {
 		else setList([...list, inputValue]);
 	};
 
-	const eliminarInput = index => {
-		newList = list;
-		newList.splice(index, 1);
-		setList(newList); // ['cero', 'cuatro']
+	const eliminarInput = indexBorrar => {
+		setList(prevState =>
+			prevState.filter((item, index) => index !== indexBorrar)
+		);
 	};
 
 	console.log(inputValue);
@@ -30,22 +30,42 @@ const Home = () => {
 
 	return (
 		<div>
-			<input
-				type="text"
-				onChange={e => setInputValue(e.target.value)}
-				value={inputValue}
-			/>
-			<button onClick={validateInput}>Añadir</button>
-			{list.map((item, index) => (
-				<li key={index}>
-					<p>{item}</p>
-					<button onClick={eliminarInput(index)}>
-						X
-					</button>
-				</li>
-			))}
+			<h2 className="d-flex justify-content-center text-center">
+				My To-Do List
+			</h2>
+			<div className="d-flex justify-content-center">
+				<input
+					type="text"
+					onChange={e => setInputValue(e.target.value)}
+					value={inputValue}
+				/>
+				<button onClick={validateInput}>Añadir</button>
+			</div>
+
+			<br />
+			<div className="text-center">
+				<ul>
+					{list.map((item, index) => (
+						<li key={index}>
+							{item}
+							<button
+								className="btn"
+								onClick={() => eliminarInput(index)}>
+								<i className="fas fa-trash-alt" />
+							</button>
+						</li>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 };
 
+//<button onClick={validateInput}>Añadir</button>
+//{list.map((item, index) => (
+//	<li key={index}>
+//		<p>{item}</p>
+//		<button onClick={eliminarInput(index)}>X</button>
+//	</li>
+//))}
 export default Home;
