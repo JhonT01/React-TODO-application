@@ -1,8 +1,5 @@
 import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
 //create your first component
 const Home = () => {
 	const [inputValue, setInputValue] = React.useState("");
@@ -44,14 +41,14 @@ const Home = () => {
 
 			<br />
 			<div className="text-center">
-				<ul>
+				<ul className="list-group">
 					{list.map((item, index) => (
-						<li key={index}>
+						<li key={index} class="list-group-item">
 							{item}
 							<button
 								className="btn"
 								onClick={() => eliminarInput(index)}>
-								<i className="fas fa-trash-alt" />
+								<i class="fas fa-minus-circle"></i>
 							</button>
 						</li>
 					))}
@@ -61,11 +58,4 @@ const Home = () => {
 	);
 };
 
-//<button onClick={validateInput}>Añadir</button>
-//{list.map((item, index) => (
-//	<li key={index}>
-//		<p>{item}</p>
-//		<button onClick={eliminarInput(index)}>X</button>
-//	</li>
-//))}
 export default Home;
