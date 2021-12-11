@@ -36,7 +36,11 @@ const Home = () => {
 					onChange={e => setInputValue(e.target.value)}
 					value={inputValue}
 				/>
-				<button onClick={validateInput}>Añadir</button>
+				<button
+					className="btn btn-outline-primary"
+					onClick={validateInput}>
+					Añadir
+				</button>
 			</div>
 
 			<br />
